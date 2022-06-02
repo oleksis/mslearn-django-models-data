@@ -32,7 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     #[TODO] - Add the app to the list of INSTALLED_APPS
-    
+    'dog_shelters.apps.DogSheltersConfig',
+    'crispy_forms',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -68,6 +69,8 @@ TEMPLATES = [
         },
     },
 ]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 WSGI_APPLICATION = 'project.wsgi.application'
 
@@ -120,3 +123,6 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+if 'WEBSITE_HOSTNAME' in os.environ: # Running on Azure
+    from .azure import *
